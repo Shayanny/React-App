@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavigationBar from './components/Navbar';
 import HomePage from './components/Home';
 import ReadPage from './components/Read';
@@ -12,6 +12,8 @@ function App() {
         <Route path="/Home" element={<HomePage/>} />
         <Route path="/Read" element={<ReadPage/>} />
         <Route path="/Create" element={<CreatePage/>} />
+        <Route path="*" element={<Navigate to="/Home" replace />} /> {/* Default to /Home */}
+        
       </Routes>
     </Router>
   );

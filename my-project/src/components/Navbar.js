@@ -2,13 +2,15 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Navbar from 'react-bootstrap/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const NavigationBar = () => {
 
     return(
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand href="/">Navbar</Navbar.Brand>
+            <Navbar.Brand>Navbar</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/Home">Home</Nav.Link>
               <Nav.Link href="/Create">Create</Nav.Link>
