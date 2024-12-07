@@ -8,6 +8,8 @@ const CreatePage = () => {
     const [time, setTime] = useState('');
     const [calories, setCalories] = useState('');
     const [tasks , setTasks]  = useState('');
+    const [poster , setPoster]  = useState('');
+
 
     const handleSubmit = (e) => {
 
@@ -51,6 +53,14 @@ const CreatePage = () => {
                         className="form-control"
                         value={tasks}
                         onChange={(e) => { setTasks(e.target.value) }}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Please enter the image: </label>
+                    <input type="text"
+                        className="form-control"
+                        value={poster}
+                        onChange={(e) => { setPoster(e.target.value) }}
                     />
                 </div>
                 <div>
