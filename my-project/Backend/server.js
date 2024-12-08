@@ -37,10 +37,7 @@ const recipeSchema = new mongoose.Schema({
     Time: String,
     Calories: String,
     Summary: String,
-    Poster: {
-        data: Buffer,
-        contentType: String,
-    },
+    Poster:  String,
 
 });
 
@@ -51,7 +48,7 @@ const Recipe = mongoose.model('Recipe', recipeSchema);
 //Set up middleware to serve all static files (CSS, JS, etc.) from a public directory.
 app.use(express.static('public'));
 
-app.get('/api/recipes', (req, res) => {
+/*app.get('/api/recipes', (req, res) => {
     const recipes = [
 
         {
@@ -74,7 +71,7 @@ app.get('/api/recipes', (req, res) => {
     ];
     res.status(200).json({ myRecipes:recipes });
 });
-
+*/
 
 //Method to retrice all recipes
 app.get('/api/recipes', async (req, res) => {
@@ -83,8 +80,15 @@ app.get('/api/recipes', async (req, res) => {
   });
 
 //method to retrieve a specific a recipe by its ID
-app.get('/api/recipe/:id', async(req, res)=>{
+app.get('/api/recipes/:id', async(req, res)=>{
+
+    //Find the recipe by id
     const recipe = await Recipe.findById(req.params.id)
+
+    if(!recipe){
+        return res.status(404).json({ message: ' Recipe not found'});
+    }
+
     res.send(recipe);
 }
 );
@@ -94,11 +98,14 @@ app.post('/api/recipes', async (req, res)=>{
 
     const { Title, time, Calories, Summary, Poster } = req.body;
    
-    const newRecipe = new Recipe({ Title, time, Calories, Summary, Poster });
+    const newRecipe = new Recipe({ Title, time, Calories, Summary, Poster});
     await newRecipe.save();
+
+    //Add poster here...
    
     res.status(201).json({ message: 'Recipe created successfully', Recipe: newRecipe });
     })
+
 
 
 app.get('/', (req, res) => {
