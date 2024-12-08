@@ -26,6 +26,8 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something went wrong!');
 });
 
+mongoose.connect('mongodb+srv://shayanny4:Shemoonspell148%21@cluster4444.vpjup.mongodb.net/Recipes');
+
 //Set up middleware to serve all static files (CSS, JS, etc.) from a public directory.
 app.use(express.static('public'));
 
