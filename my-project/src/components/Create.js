@@ -14,10 +14,20 @@ const CreatePage = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        const recipe = {title , time , calories , tasks};
+        const recipe = {
+            title: title,
+            time: time,
+            calories: calories,
+            tasks: tasks,
+            poster: poster
+        };
         console.log(recipe);
 
-    }
+        axios.post('http://localhost:4000/api/recipes', recipe)
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err.data));
+        
+    };
 
     return (
         <div>
