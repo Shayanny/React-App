@@ -15,11 +15,11 @@ const CreatePage = () => {
 
         e.preventDefault();
         const recipe = {
-            title: title,
-            time: time,
-            calories: calories,
-            tasks: tasks,
-            poster: poster
+            Title: title,
+            Time: time,
+            Calories: calories,
+            Summary: tasks,
+            Poster: poster
         };
         console.log(recipe);
 

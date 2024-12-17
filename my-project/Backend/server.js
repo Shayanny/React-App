@@ -96,9 +96,9 @@ app.get('/api/recipes/:id', async(req, res)=>{
 
 app.post('/api/recipes', async (req, res)=>{
 
-    const { Title, time, Calories, Summary, Poster } = req.body;
+    const { Title, Time, Calories, Summary, Poster } = req.body;
    
-    const newRecipe = new Recipe({ Title, time, Calories, Summary, Poster});
+    const newRecipe = new Recipe({ Title, Time, Calories, Summary, Poster});
     await newRecipe.save();
 
     //Add poster here...
