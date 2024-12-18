@@ -43,7 +43,7 @@ const RecipeItem = (props) => {
                         <p>{props.myrecipe.Summary}</p>
                     </div>
                 </div>
-                <footer style={styles.footer}>{props.myrecipe.Time}</footer>
+                <footer style={styles.footer}>{props.myrecipe.Time}<br></br>Calories : {props.myrecipe.Calories}</footer>
             </Card.Body>
 
         </Card>

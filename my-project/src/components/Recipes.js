@@ -15,6 +15,7 @@ const Recipes = (props) => {
 
         }
     );
-}
+};
+
 
 export default Recipes;
