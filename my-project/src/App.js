@@ -3,6 +3,7 @@ import NavigationBar from './components/Navbar';
 import HomePage from './components/Home';
 import ReadPage from './components/Read';
 import CreatePage from './components/Create';
+import EditPage from './components/Edit';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/Home" element={<HomePage/>} />
         <Route path="/Read" element={<ReadPage/>} />
         <Route path="/Create" element={<CreatePage/>} />
+        <Route path='/Edit/:id' element={<EditPage />} />
         <Route path="*" element={<Navigate to="/Home" replace />} /> {/* Default to /Home */}
         
       </Routes>

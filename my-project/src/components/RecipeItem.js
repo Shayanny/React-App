@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 
 const RecipeItem = (props) => {
 
@@ -45,6 +46,7 @@ const RecipeItem = (props) => {
                 </div>
                 <footer style={styles.footer}>{props.myrecipe.Time}<br></br>Calories : {props.myrecipe.Calories}</footer>
             </Card.Body>
+            <Link to={"/Edit/" + props.myrecipe._id} className="btn btn-primary">Edit</Link>
 
         </Card>
 

@@ -48,30 +48,6 @@ const Recipe = mongoose.model('Recipe', recipeSchema);
 //Set up middleware to serve all static files (CSS, JS, etc.) from a public directory.
 app.use(express.static('public'));
 
-/*app.get('/api/recipes', (req, res) => {
-    const recipes = [
-
-        {
-            "Title": "Simple Lemon Herb Chicken",
-            "Time": "15 min",
-            "Calories": "265",
-            "Summary": "This lemon-herb chicken is a simple, quick, and delicious dish. All you need are a few herbs, a lemon, and of course, the chicken! The amount of spices is completely up to you. You can add more or less according to your taste.",
-            "Poster": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F01%2F26%2FSimple-Lemon-Herb-Chicken-2000.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90"
-        },
-        {
-            "Title": "Sesame Grilled Salmon",
-            "Time": "25 min",
-            "Calories": "406",
-            "Summary": "Delicious grilled sesame salmon. A very flavorful main dish. Great when served with grilled yellow bell peppers, green beans, and wild rice with herbs.",
-            "Poster": "https://www.allrecipes.com/thmb/YSM5NQOOlyzP-kcI4UjZMwydTSg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/1144548-e67757e47a32478fac80193da768cd99.jpg"
-        }
-
-
-
-    ];
-    res.status(200).json({ myRecipes:recipes });
-});
-*/
 
 //Method to retrice all recipes
 app.get('/api/recipes', async (req, res) => {
@@ -93,7 +69,7 @@ app.get('/api/recipes/:id', async(req, res)=>{
 }
 );
 
-
+//Create new recipe
 app.post('/api/recipes', async (req, res)=>{
 
     const { Title, Time, Calories, Summary, Poster } = req.body;
@@ -108,8 +84,15 @@ app.post('/api/recipes', async (req, res)=>{
 
 
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
+//Serverside code for edit
+app.get('/api/recipes/:id', async (req, res) => {
+    let recipe = await Recipe.findById({ _id: req.params.id });
+    res.send(recipe);
+});
+
+app.put('/api/recipes/:id', async (req, res) => {
+    let recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.send(recipe);
 });
 
 app.listen(port, () => {
