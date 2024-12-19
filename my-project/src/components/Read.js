@@ -58,7 +58,7 @@ const styles = {
     },
     recipeGrid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive grid
+        flexDirection:'column',
         gap: '20px',
         padding: '20px',
     },
