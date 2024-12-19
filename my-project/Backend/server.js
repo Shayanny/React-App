@@ -127,6 +127,14 @@ app.put('/api/recipes/:id', async (req, res) => {
     }
 });
 
+app.delete('/api/recipes/:id', async (req, res) => {
+  
+    console.log('Deleting recipe with ID:', req.params.id);
+    const recipe = await Recipe.findByIdAndDelete(req.params.id);
+    res.status(200).send({ message: "Recipe deleted successfully", recipe });
+    
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

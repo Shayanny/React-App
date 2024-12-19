@@ -3,6 +3,7 @@ import React from 'react';
  import { useState, useEffect } from 'react';
  import axios from 'axios';
  import { useNavigate } from "react-router-dom";
+ import Button from 'react-bootstrap/Button';
 
 const EditPage = () => {
     
@@ -55,6 +56,18 @@ const EditPage = () => {
             });
 
     }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        axios.delete('http://localhost:4000/api/recipes/' + id)
+            .then(() => {
+                // Redirect after a short delay
+                setTimeout(() => navigate('/read'), 2000);
+            })
+            .catch((error) => {
+                console.error("Error deleting recipe:", error);
+            });
+    };
 
 
     return (
@@ -109,6 +122,7 @@ const EditPage = () => {
                             value="Edit Recipe"
                             className="btn btn-dark"
                         />
+                        <Button variant="danger" onClick={handleDelete}>Delete</Button>
                     </div>
                 </form>
             </div>

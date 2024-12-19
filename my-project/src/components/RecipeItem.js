@@ -9,6 +9,7 @@ const RecipeItem = (props) => {
         //console.log("Recipe Item:", props.myrecipe);
     }, [props.myrecipe]); // Only run this effect when the myrecipe prop changes
 
+
     const styles = {
         container: {
             display: 'flex', // Align items horizontally
