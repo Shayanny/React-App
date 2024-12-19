@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-//Error Hnadling middleware
+//Error Handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
@@ -51,7 +51,7 @@ const Recipe = mongoose.model('Recipe', recipeSchema);
 app.use(express.static('public'));
 
 
-//Method to retrice all recipes
+//Method to retreive all recipes
 app.get('/api/recipes', async (req, res) => {
     try {
         const recipes = await Recipe.find({});

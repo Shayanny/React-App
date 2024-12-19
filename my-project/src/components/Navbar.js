@@ -53,13 +53,13 @@ const styles = {
     color: '#ffa07a', // Light orange for the icon
   },
   toggleButton: {
-    backgroundColor: '#ffa07a', // Light orange toggle button
+    backgroundColor: '#ffa07a', // Light orange 
     borderColor: '#ffa07a',     // Match the border color
   },
   navLinks: {
     display: 'flex',
     flexDirection: 'column', // Align links vertically
-    gap: '10px',             // Adds space between links
+    gap: '10px',             
   },
   link: {
     color: '#ffa07a',
