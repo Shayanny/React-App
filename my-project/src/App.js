@@ -28,12 +28,12 @@ function App() {
 
 const styles = {
   appContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '100vh', // Ensures the full viewport height
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh', // Ensures the full viewport height
   },
   contentWrapper: {
-      flex: '1 0 auto', // Allows the content to expand while pushing the footer down
+    flex: '1 0 auto', // Allows the content to expand while pushing the footer down
   },
 };
 

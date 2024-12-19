@@ -6,7 +6,7 @@ const Footer = () => {
         <footer style={styles.footer}>
             <p>© 2024 Munchies. All Rights Reserved.</p>
             <p>
-                <Link to="/about" style={styles.footerLink}>About Us</Link> | 
+                <Link to="/about" style={styles.footerLink}>About Us</Link> |
                 <Link to="/contact" style={styles.footerLink}> Contact</Link>
             </p>
         </footer>

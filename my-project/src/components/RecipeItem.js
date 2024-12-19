@@ -6,27 +6,27 @@ const RecipeItem = (props) => {
 
     //useEffect() is used to log props to the console whenever the component mounts or updates
     useEffect(() => {
-        //console.log("Recipe Item:", props.myrecipe);
+        
     }, [props.myrecipe]); // Only run this effect when the myrecipe prop changes
 
 
     const styles = {
         container: {
             display: 'flex', // Align items horizontally
-            gap: '20px', // Adds space between the image and summary
+            gap: '20px', 
             alignItems: 'flex-start', // Aligns content at the top
         },
         summary: {
             flex: 1, // Ensures the summary takes up the remaining space
-            padding: '10px', // Adds some padding around the text
-            color: '#555', // Optional: Adjust text color for better readability
+            padding: '10px',
+            color: '#555',
         },
         footer: {
             marginTop: '10px',
             fontStyle: 'italic',
             color: '#555',
         },
-   
+
 
     };
 

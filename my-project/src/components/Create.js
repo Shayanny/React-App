@@ -9,10 +9,10 @@ const CreatePage = () => {
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     const [calories, setCalories] = useState('');
-    const [tasks , setTasks]  = useState('');
-    const [poster , setPoster]  = useState('');
+    const [tasks, setTasks] = useState('');
+    const [poster, setPoster] = useState('');
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
 
     const handleSubmit = (e) => {
@@ -28,22 +28,22 @@ const CreatePage = () => {
         console.log(recipe);
 
         axios.post('http://localhost:4000/api/recipes', recipe)
-        .then((res) => {
+            .then((res) => {
 
-            // Clear form inputs
-            setTitle('');
-            setTime('');
-            setCalories('');
-            setTasks('');
-            setPoster('');
+                // Clear form inputs
+                setTitle('');
+                setTime('');
+                setCalories('');
+                setTasks('');
+                setPoster('');
 
-            // Redirect after a short delay
-            setTimeout(() => navigate('/read'), 2000);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-            
+                // Redirect after a short delay
+                setTimeout(() => navigate('/read'), 2000);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
 
     };
 
@@ -107,7 +107,7 @@ const CreatePage = () => {
                 </form>
             </div>
         </div>
-        
+
     );
 };
 
@@ -117,7 +117,7 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh', // Center vertically in full viewport
-        backgroundImage: 'url("https://st2.depositphotos.com/1013886/9286/i/950/depositphotos_92868544-stock-photo-healthy-food-background.jpg")', 
+        backgroundImage: 'url("https://st2.depositphotos.com/1013886/9286/i/950/depositphotos_92868544-stock-photo-healthy-food-background.jpg")',
         backgroundSize: 'cover', // Ensures the image covers the entire container
         backgroundPosition: 'center', // Centers the background image
         backgroundRepeat: 'no-repeat', // Prevents the image from repeating
@@ -144,7 +144,7 @@ const styles = {
         textAlign: 'center',
         marginTop: '20px',
     },
-   
+
 };
 
 

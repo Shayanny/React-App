@@ -5,17 +5,17 @@ import Footer from "./Footer";
 
 const ReadPage = () => {
 
-    const[recipes , setRecipes] = useState([]); // State to store fetched recipes
+    const [recipes, setRecipes] = useState([]); // State to store fetched recipes
     const [error, setError] = useState(null);  // State to handle errors
 
 
     useEffect(() => {
-    
+
         axios.get('http://localhost:4000/api/recipes')
-          .then((response) => {
-              //console.log(response.data);
-              setRecipes(response.data);
-          })
+            .then((response) => {
+                //console.log(response.data);
+                setRecipes(response.data);
+            })
             .catch((error) => {
                 console.log(error);
                 setError("Failed to fetch recipes."); // Set an error message
@@ -23,7 +23,7 @@ const ReadPage = () => {
             });
     });
 
-   
+
     return (
         <div style={styles.pageContainer}>
             <div style={styles.content}>
@@ -58,11 +58,11 @@ const styles = {
     },
     recipeGrid: {
         display: 'grid',
-        flexDirection:'column',
+        flexDirection: 'column',
         gap: '20px',
         padding: '20px',
     },
- 
+
 };
 
 export default ReadPage;

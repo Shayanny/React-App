@@ -39,7 +39,7 @@ const recipeSchema = new mongoose.Schema({
     Time: String,
     Calories: String,
     Summary: String,
-    Poster:  String,
+    Poster: String,
 
 });
 
@@ -59,11 +59,11 @@ app.get('/api/recipes', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error fetching recipes', error });
     }
-  });
+});
 
 
 //method to retrieve a specific a recipe by its ID
-app.get('/api/recipes/:id', async(req, res)=>{
+app.get('/api/recipes/:id', async (req, res) => {
 
     //Find the recipe by id
     try {
@@ -79,24 +79,24 @@ app.get('/api/recipes/:id', async(req, res)=>{
 );
 
 //Create new recipe
-app.post('/api/recipes', async (req, res)=>{
-    
-    try{
-    const { Title, Time, Calories, Summary, Poster } = req.body;
+app.post('/api/recipes', async (req, res) => {
 
-    // Validate incoming data
-    if (!Title || !Time || !Calories || !Summary || !Poster) {
-        return res.status(400).json({ message: 'All fields are required' });
-    }
-   
-    const newRecipe = new Recipe({ Title, Time, Calories, Summary, Poster});
-    await newRecipe.save();
+    try {
+        const { Title, Time, Calories, Summary, Poster } = req.body;
 
-    res.status(201).json({ message: 'Recipe created successfully', Recipe: newRecipe });
-    }catch (error) {
+        // Validate incoming data
+        if (!Title || !Time || !Calories || !Summary || !Poster) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        const newRecipe = new Recipe({ Title, Time, Calories, Summary, Poster });
+        await newRecipe.save();
+
+        res.status(201).json({ message: 'Recipe created successfully', Recipe: newRecipe });
+    } catch (error) {
         res.status(500).json({ message: 'Error updating recipe', error });
     }
-    });
+});
 
 
 //Serverside code for edit
@@ -128,11 +128,11 @@ app.put('/api/recipes/:id', async (req, res) => {
 });
 
 app.delete('/api/recipes/:id', async (req, res) => {
-  
+
     console.log('Deleting recipe with ID:', req.params.id);
     const recipe = await Recipe.findByIdAndDelete(req.params.id);
     res.status(200).send({ message: "Recipe deleted successfully", recipe });
-    
+
 });
 
 app.listen(port, () => {

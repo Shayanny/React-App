@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
         <div className="page-container">
             <header className="hero-section">
-                <h1 className="hero-title">Welcome to <GiForkKnifeSpoon classname = "icon" /> Munchies! </h1>
+                <h1 className="hero-title">Welcome to <GiForkKnifeSpoon classname="icon" /> Munchies! </h1>
                 <p className="hero-subtitle">
                     Discover, Create, and Savor your favorite recipes!
                 </p>
@@ -65,7 +65,6 @@ const HomePage = () => {
                         className="featured-item"
                         style={{
                             backgroundImage: 'url("https://www.allrecipes.com/thmb/Apm8-tS4DADYnne_fY1WJaRkPBc=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/45957-ChickenMakhaniIndianButterChicken-mfs-4X3-0037-7aa9a555bf3943baae20c5c3b0921375.jpg")',
-
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat',
 

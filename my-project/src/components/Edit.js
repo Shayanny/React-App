@@ -1,22 +1,22 @@
 import React from 'react';
- import { useParams } from 'react-router-dom';
- import { useState, useEffect } from 'react';
- import axios from 'axios';
- import { useNavigate } from "react-router-dom";
- import Button from 'react-bootstrap/Button';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 const EditPage = () => {
-    
+
     // Get the recipe ID from the URL
     let { id } = useParams();
 
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     const [calories, setCalories] = useState('');
-    const [tasks , setTasks]  = useState('');
-    const [poster , setPoster]  = useState('');
+    const [tasks, setTasks] = useState('');
+    const [poster, setPoster] = useState('');
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:4000/api/recipes/' + id)
@@ -140,10 +140,10 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh', // Center vertically in full viewport
-        backgroundImage: 'url("https://st2.depositphotos.com/1013886/9286/i/950/depositphotos_92868544-stock-photo-healthy-food-background.jpg")', 
-        backgroundSize: 'cover', // Ensures the image covers the entire container
-        backgroundPosition: 'center', // Centers the background image
-        backgroundRepeat: 'no-repeat', // Prevents the image from repeating
+        backgroundImage: 'url("https://st2.depositphotos.com/1013886/9286/i/950/depositphotos_92868544-stock-photo-healthy-food-background.jpg")',
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', 
         backgroundColor: '#f8f9fa',
         fontFamily: 'Arial, sans-serif',
     },
@@ -156,7 +156,7 @@ const styles = {
         maxWidth: '500px',
         marginLeft: '50px', // Move form slightly to the right
         marginBottom: '150px'
-    
+
     },
     header: {
         marginBottom: '20px',

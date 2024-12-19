@@ -58,7 +58,7 @@
 }
 
 .benefits-list {
-    
+
     padding: 0;
     text-align: left;
     margin: 0 auto;
@@ -68,7 +68,8 @@
 .featured-section {
     padding: 40px 20px;
     text-align: center;
-    background-color: #ffe4c4; /* Light beige for a warm feel */
+    background-color: #ffe4c4;
+    
 }
 
 .featured-items {
@@ -97,9 +98,10 @@
     font-size: 1rem;
     margin-bottom: 15px;
 }
+
 .icon {
 
-    margin-Right:8px;
+    margin-Right: 8px;
     font-size: 1.8rem;
     color: #ffa07a;
 
