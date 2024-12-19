@@ -21,11 +21,11 @@ const EditPage = () => {
     useEffect(() => {
         axios.get('http://localhost:4000/api/recipes/' + id)
             .then((response) => {
-                setTitle(response.data.title || ''); //Fallback to empty string 
-                setTime(response.data.time || '');
-                setCalories(response.data.calories || '');
-                setTasks(response.data.tasks || '')
-                setPoster(response.data.poster || '');
+                setTitle(response.data.Title || ''); //Fallback to empty string 
+                setTime(response.data.Time || '');
+                setCalories(response.data.Calories || '');
+                setTasks(response.data.Summary || '')
+                setPoster(response.data.Poster || '');
             })
             .catch((error) => {
                 console.log('Error fetching recipe:', error);
@@ -102,11 +102,15 @@ const EditPage = () => {
                     </div>
                     <div className="form-group">
                         <label>Please write the instructions: </label>
-                        <input type="text"
+                        <textarea
                             className="form-control"
                             value={tasks}
-                            onChange={(e) => { setTasks(e.target.value) }}
-                        />
+                            onChange={(e) => setTasks(e.target.value)}
+                            rows="8" // Adjust height with the number of rows
+                            style={{
+                                resize: 'vertical', // Allow vertical resizing only
+                            }}
+                        ></textarea>
                     </div>
                     <div className="form-group">
                         <label>Please enter the image: </label>

@@ -78,11 +78,15 @@ const CreatePage = () => {
                     </div>
                     <div className="form-group">
                         <label>Please write the instructions: </label>
-                        <input type="text"
+                        <textarea
                             className="form-control"
                             value={tasks}
-                            onChange={(e) => { setTasks(e.target.value) }}
-                        />
+                            onChange={(e) => setTasks(e.target.value)}
+                            rows="8" // Adjust height with the number of rows
+                            style={{
+                                resize: 'vertical', // Allow vertical resizing only
+                            }}
+                        ></textarea>
                     </div>
                     <div className="form-group">
                         <label>Please enter the image: </label>
