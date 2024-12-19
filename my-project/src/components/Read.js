@@ -12,7 +12,7 @@ const ReadPage = () => {
     
         axios.get('http://localhost:4000/api/recipes')
           .then((response) => {
-              console.log(response.data);
+              //console.log(response.data);
               setRecipes(response.data);
           })
             .catch((error) => {

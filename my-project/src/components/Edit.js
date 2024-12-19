@@ -20,20 +20,20 @@ const EditPage = () => {
     useEffect(() => {
         axios.get('http://localhost:4000/api/recipes/' + id)
             .then((response) => {
-                setTitle(response.data.title);
-                setTime(response.data.time);
-                setCalories(response.data.calories);
-                setTasks(response.data.tasks)
-                setPoster(response.data.poster);
+                setTitle(response.data.title || ''); //Fallback to empty string 
+                setTime(response.data.time || '');
+                setCalories(response.data.calories || '');
+                setTasks(response.data.tasks || '')
+                setPoster(response.data.poster || '');
             })
             .catch((error) => {
-                console.log(error);
+                console.log('Error fetching recipe:', error);
             });
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newRecipe = { id, title, time, calories, tasks, poster };
+        const newRecipe = { Title:title, Time:time, Calories:calories, Summary:tasks, Poster:poster };
         console.log(newRecipe)
 
         axios.put('http://localhost:4000/api/recipes/' + id, newRecipe)

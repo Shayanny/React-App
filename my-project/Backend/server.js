@@ -86,22 +86,40 @@ app.post('/api/recipes', async (req, res)=>{
     const newRecipe = new Recipe({ Title, Time, Calories, Summary, Poster});
     await newRecipe.save();
 
-    //Add poster here...
-   
     res.status(201).json({ message: 'Recipe created successfully', Recipe: newRecipe });
     })
 
 
-
 //Serverside code for edit
+/*
 app.get('/api/recipes/:id', async (req, res) => {
     let recipe = await Recipe.findById({ _id: req.params.id });
     res.send(recipe);
-});
+});*/
 
 app.put('/api/recipes/:id', async (req, res) => {
-    let recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.send(recipe);
+    try {
+        const { Title, Time, Calories, Summary, Poster } = req.body;
+
+        // Validate incoming data
+        if (!Title || !Time || !Calories || !Summary || !Poster) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        const updatedRecipe = await Recipe.findByIdAndUpdate(
+            req.params.id,
+            { Title, Time, Calories, Summary, Poster },
+            { new: true, runValidators: true } // Return updated document and validate inputs
+        );
+
+        if (!updatedRecipe) {
+            return res.status(404).json({ message: 'Recipe not found' });
+        }
+
+        res.json({ message: 'Recipe updated successfully', Recipe: updatedRecipe });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating recipe', error });
+    }
 });
 
 app.listen(port, () => {

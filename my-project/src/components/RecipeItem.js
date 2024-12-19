@@ -6,7 +6,7 @@ const RecipeItem = (props) => {
 
     //useEffect() is used to log props to the console whenever the component mounts or updates
     useEffect(() => {
-        console.log("Recipe Item:", props.myrecipe);
+        //console.log("Recipe Item:", props.myrecipe);
     }, [props.myrecipe]); // Only run this effect when the myrecipe prop changes
 
     const styles = {
