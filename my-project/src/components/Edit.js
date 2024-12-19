@@ -33,27 +33,38 @@ const EditPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newRecipe = { Title:title, Time:time, Calories:calories, Summary:tasks, Poster:poster };
+
+        const newRecipe = { Title: title, Time: time, Calories: calories, Summary: tasks, Poster: poster };
         console.log(newRecipe)
 
         axios.put('http://localhost:4000/api/recipes/' + id, newRecipe)
             .then((res) => {
-                console.log("Edited: " + res.data);
-                navigate('/read');
+
+                // Clear form inputs
+                setTitle('');
+                setTime('');
+                setCalories('');
+                setTasks('');
+                setPoster('');
+
+                // Redirect after a short delay
+                setTimeout(() => navigate('/read'), 2000);
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err);
             });
-           
+
     }
+
 
     return (
         <div style={styles.pageContainer}>
             <div style={styles.formContainer}>
                 <h3 style={styles.header}>Edit Your Recipe</h3>
+                <h7 style={styles.header}>Please provide an input for each box</h7>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>Add Recipe Title: </label>
+                        <label><br></br>Add Recipe Title: </label>
                         <input type="text"
                             className="form-control"
                             value={title}
