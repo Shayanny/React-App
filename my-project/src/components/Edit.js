@@ -34,11 +34,17 @@ const EditPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newRecipe = { id, title, time, calories, tasks, poster };
+        console.log(newRecipe)
+
         axios.put('http://localhost:4000/api/recipes/' + id, newRecipe)
             .then((res) => {
-                console.log(res.data);
+                console.log("Edited: " + res.data);
                 navigate('/read');
+            })
+            .catch((err)=>{
+                console.log(err);
             });
+           
     }
 
     return (
@@ -89,7 +95,7 @@ const EditPage = () => {
                     <div style={styles.submitContainer}>
                         <input
                             type="submit"
-                            value="Submit Recipe"
+                            value="Edit Recipe"
                             className="btn btn-dark"
                         />
                     </div>

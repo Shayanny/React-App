@@ -4,16 +4,14 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 const multer = require('multer')
 
-
 const app = express();
 const port = 4000;
+
 
 //BodyParser Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.use(cors());
-
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -27,11 +25,15 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something went wrong!');
 });
 
+//MongoDB Connection
 mongoose.connect('mongodb+srv://shayanny4:Shemoonspell148%21@cluster4444.vpjup.mongodb.net/Recipes');
 
+
+// Multer Setup for Memory Storage
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+// Recipe Schema and Model
 const recipeSchema = new mongoose.Schema({
     Title: String,
     Time: String,
@@ -51,21 +53,28 @@ app.use(express.static('public'));
 
 //Method to retrice all recipes
 app.get('/api/recipes', async (req, res) => {
-    const recipes = await Recipe.find({});
-    res.json(recipes);
+    try {
+        const recipes = await Recipe.find({});
+        res.json(recipes);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching recipes', error });
+    }
   });
+
 
 //method to retrieve a specific a recipe by its ID
 app.get('/api/recipes/:id', async(req, res)=>{
 
     //Find the recipe by id
-    const recipe = await Recipe.findById(req.params.id)
-
-    if(!recipe){
-        return res.status(404).json({ message: ' Recipe not found'});
+    try {
+        const recipe = await Recipe.findById(req.params.id);
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recipe not found' });
+        }
+        res.json(recipe);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching recipe', error });
     }
-
-    res.send(recipe);
 }
 );
 

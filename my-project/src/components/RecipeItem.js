@@ -46,8 +46,7 @@ const RecipeItem = (props) => {
                 </div>
                 <footer style={styles.footer}>{props.myrecipe.Time}<br></br>Calories : {props.myrecipe.Calories}</footer>
             </Card.Body>
-            <Link to={"/Edit/" + props.myrecipe._id} className="btn btn-primary">Edit</Link>
-
+            <Link to={"/Edit/" + props.myrecipe._id} className="btn btn-primary btn-sm" >Edit</Link>
         </Card>
 
     );
