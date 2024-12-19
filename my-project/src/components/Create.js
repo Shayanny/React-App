@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const CreatePage = () => {
 
@@ -9,6 +10,8 @@ const CreatePage = () => {
     const [calories, setCalories] = useState('');
     const [tasks , setTasks]  = useState('');
     const [poster , setPoster]  = useState('');
+
+    const navigate = useNavigate(); 
 
 
     const handleSubmit = (e) => {
@@ -24,8 +27,22 @@ const CreatePage = () => {
         console.log(recipe);
 
         axios.post('http://localhost:4000/api/recipes', recipe)
-            .then((res) => console.log(res.data))
-            .catch((err) => console.log(err.data));
+        .then((res) => {
+
+            // Clear form inputs
+            setTitle('');
+            setTime('');
+            setCalories('');
+            setTasks('');
+            setPoster('');
+
+            // Redirect after a short delay
+            setTimeout(() => navigate('/read'), 2000);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+            
 
     };
 
@@ -33,9 +50,10 @@ const CreatePage = () => {
         <div style={styles.pageContainer}>
             <div style={styles.formContainer}>
                 <h3 style={styles.header}>Recipe Submition Form</h3>
+                <h7 style={styles.header}>Please provide an input for each box</h7>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>Add Recipe Title: </label>
+                        <label><br></br>Add Recipe Title: </label>
                         <input type="text"
                             className="form-control"
                             value={title}

@@ -80,22 +80,27 @@ app.get('/api/recipes/:id', async(req, res)=>{
 
 //Create new recipe
 app.post('/api/recipes', async (req, res)=>{
-
+    
+    try{
     const { Title, Time, Calories, Summary, Poster } = req.body;
+
+    // Validate incoming data
+    if (!Title || !Time || !Calories || !Summary || !Poster) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
    
     const newRecipe = new Recipe({ Title, Time, Calories, Summary, Poster});
     await newRecipe.save();
 
     res.status(201).json({ message: 'Recipe created successfully', Recipe: newRecipe });
-    })
+    }catch (error) {
+        res.status(500).json({ message: 'Error updating recipe', error });
+    }
+    });
 
 
 //Serverside code for edit
-/*
-app.get('/api/recipes/:id', async (req, res) => {
-    let recipe = await Recipe.findById({ _id: req.params.id });
-    res.send(recipe);
-});*/
+
 
 app.put('/api/recipes/:id', async (req, res) => {
     try {
