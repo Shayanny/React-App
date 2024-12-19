@@ -1,6 +1,7 @@
 import Recipes from "./Recipes";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "./Footer";
 
 const ReadPage = () => {
 
@@ -24,8 +25,13 @@ const ReadPage = () => {
 
    
     return (
-        <div style={styles.container}>
-            <Recipes myRecipes ={recipes}/>
+        <div style={styles.pageContainer}>
+            <div style={styles.content}>
+                <h1 style={styles.header}>Our Recipes</h1>
+                <div style={styles.recipeGrid}>
+                    <Recipes myRecipes={recipes} />
+                </div>
+            </div>
         </div>
     );
 };
@@ -33,23 +39,28 @@ const ReadPage = () => {
 
 
 const styles = {
-    container: {
-        //display: 'flex',
+    pageContainer: {
+        display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
+        minHeight: '100vh', // Full viewport height
         backgroundColor: '#f5f5f5',
         fontFamily: 'Arial, sans-serif',
-        textAlign: 'center',
+    },
+    content: {
+        flex: '1 0 auto', // Allows the content to expand and push the footer to the bottom
+        padding: '20px',
     },
     header: {
+        textAlign: 'center',
         fontSize: '2rem',
         color: '#333',
+        margin: '20px 0',
     },
-    paragraph: {
-        fontSize: '1rem',
-        color: '#555',
+    recipeGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive grid
+        gap: '20px',
+        padding: '20px',
     },
  
 };

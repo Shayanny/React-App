@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const CreatePage = () => {
 
@@ -106,6 +107,7 @@ const CreatePage = () => {
                 </form>
             </div>
         </div>
+        
     );
 };
 
@@ -142,6 +144,7 @@ const styles = {
         textAlign: 'center',
         marginTop: '20px',
     },
+   
 };
 
 
